@@ -15,16 +15,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-//@AllArgsConstructor //(onConstructor = @__(@Autowired))
+@AllArgsConstructor (onConstructor = @__(@Autowired))
 public class PersonService {
 
-    @Autowired
     private PersonRepository personRepository;
-
-    //@Autowired
-    public PersonService(PersonRepository personRepository) {
-        this.personRepository = personRepository;
-    }
 
     private final PersonMapper personMapper = PersonMapper.INSTANCE;
 
