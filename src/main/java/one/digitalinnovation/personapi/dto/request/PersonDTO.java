@@ -1,10 +1,15 @@
 package one.digitalinnovation.personapi.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import one.digitalinnovation.personapi.enums.PhoneType;
 import org.hibernate.validator.constraints.br.CPF;
+import org.mapstruct.Mapping;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;

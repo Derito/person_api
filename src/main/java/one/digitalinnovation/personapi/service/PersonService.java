@@ -9,20 +9,26 @@ import one.digitalinnovation.personapi.mapper.PersonMapper;
 import one.digitalinnovation.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
+
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor(onConstructor = @__(@Autowired))
+//@AllArgsConstructor //(onConstructor = @__(@Autowired))
 public class PersonService {
 
+    @Autowired
     private PersonRepository personRepository;
+
+    //@Autowired
+    public PersonService(PersonRepository personRepository) {
+        this.personRepository = personRepository;
+    }
 
     private final PersonMapper personMapper = PersonMapper.INSTANCE;
 
-    public MessageResponseDTO createPerson(@RequestBody PersonDTO personDTO){
+    public MessageResponseDTO createPerson(PersonDTO personDTO){
         Person personToSave  = personMapper.toModel(personDTO);
         Person  savedPerson = personRepository.save(personToSave);
         return  createMessageResponse(savedPerson.getId(),"Created person with ID ");
@@ -37,7 +43,6 @@ public class PersonService {
 
     public PersonDTO findById(Long id) throws PersonNotFoundException {
         Person person = verifyIfExists(id);
-
         return personMapper.toDTO(person);
     }
 
