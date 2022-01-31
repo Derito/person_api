@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org ">
+<<body>
+<h2>Persons</h2>
+<h3>Enter new Person:</h3>
+<form action="/person" method="post">
+    <pre>
+  First Name:   <input name="firstName"/> <br/>
+   Last Name:   <input name="lastName"/><br/>
+     Address:   <input th:name="address"/><br/>
+    <input type="submit" value="Save">
+        </pre>
+</form>
+<br>
+<h3>Saved Persons</h3>
+<table style="width:100%;text-align:center">
+    <tr><th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+    </tr>
+    <tr th:each="person : ${persons}">
+        <td th:text="${person.id}"></td>
+        <td th:text="${person.firstName}"></td>
+        <td th:text="${person.lastName}"></td>
+        <td th:text="${person.address}"></td>
+    </tr>
+</table>
+</body>
+</html>
